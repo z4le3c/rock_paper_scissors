@@ -17,7 +17,7 @@ function getComputerChoice() {
     return choice;
 }
 
-function playSingleRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     function serialize(choice) {
         choice = choice.toLowerCase();
         switch (choice) {
@@ -43,4 +43,6 @@ function playSingleRound(playerSelection, computerSelection) {
 }
 
 
-console.log(playSingleRound('paper', 'rock'))
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
