@@ -34,13 +34,13 @@ function playSingleRound(playerSelection, computerSelection) {
     let nComputerChoice = serialize(computerSelection);
 
     if (nPlayerChoice == nComputerChoice) {
-        console.log('Is a tie!')
+        return 'Is a tie!'
     } else if ((nPlayerChoice + 1) % 3 == nComputerChoice) {
-        console.log(`You win!, ${playerSelection} beats ${computerSelection}`)
+        return `You win!, ${playerSelection} beats ${computerSelection}`
     } else {
-        console.log(`You lose!, ${computerSelection} beats ${playerSelection}`)
+        return `You lose!, ${computerSelection} beats ${playerSelection}`
     }
 }
 
 
-console.log(playSingleRound('scissors', 'rock'))
+console.log(playSingleRound('paper', 'rock'))
