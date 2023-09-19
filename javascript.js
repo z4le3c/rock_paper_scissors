@@ -42,7 +42,29 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function game() {
+    let computerScore = 0;
+    let playerScore = 0;
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+    for (let i = 0; i < 5; i++) {
+        let playerChoice = prompt('What do you choose?', 'Rock');
+        let result = playRound(playerChoice, getComputerChoice());
+
+        console.log(result);
+        
+        if (result.search('win') != -1) {
+            playerScore++;
+        } else if (result.search('lose') != -1) {
+            computerScore++;
+        }
+    }
+    if (playerScore > computerScore) {
+        console.log('You win')
+    } else if (computerScore > playerScore) {
+        console.log('The computer wins')
+    } else {
+        console.log('Its a draw')
+    }
+}
+
+game();
