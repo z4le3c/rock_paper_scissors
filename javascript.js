@@ -42,29 +42,33 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let computerScore = 0;
-    let playerScore = 0;
-
-    for (let i = 0; i < 5; i++) {
-        let playerChoice = prompt('What do you choose?', 'Rock');
-        let result = playRound(playerChoice, getComputerChoice());
-
-        console.log(result);
-        
+let computerScore = 0;
+let playerScore = 0;
+let round = 1;
+const buttons = document.querySelectorAll('button');
+const resultP = document.querySelector('#result');
+const scoreP = document.querySelector('#score');
+const winnerP = document.querySelector('#winner');
+buttons.forEach(b => {
+    b.addEventListener('click', () => {
+        let result = playRound(b.textContent, getComputerChoice());
+        resultP.textContent = result;
         if (result.search('win') != -1) {
             playerScore++;
         } else if (result.search('lose') != -1) {
             computerScore++;
         }
-    }
-    if (playerScore > computerScore) {
-        console.log('You win')
-    } else if (computerScore > playerScore) {
-        console.log('The computer wins')
-    } else {
-        console.log('Its a draw')
-    }
-}
-
-game();
+        scoreP.textContent = `Score: Computer ${computerScore}, Player ${playerScore}`;
+        if (computerScore == 5 || playerScore == 5) {
+            let message;
+            if (playerScore > computerScore) {
+                message = 'You win';
+            } else if (computerScore > playerScore) {
+                message = 'The computer wins';
+            } else {
+                message = 'Its a draw';
+            }
+            winnerP.textContent = message;
+        }
+    });
+});
